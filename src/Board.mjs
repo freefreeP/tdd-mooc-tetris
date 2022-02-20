@@ -6,28 +6,21 @@ export class Board {
   constructor(width, height) {
     this.width = width;
     this.height = height;
-    this.board = []
+    this.board = [this.height]
 
-    for(let i = 0; i < width; i++) {
+    for(let i = 0; i < height; i++) {
       this.board[i] = []
-      for(let j = 0; j < height; j++) {
+      for(let j = 0; j < width; j++) {
         this.board[i][j] = "."
       }
-
     }
   }
 
   toString() {
-    let board = ""
-    for(let i = 0; i < this.height; i++) {
-      for(let j = 0; j < this.width; j++) {
-        board += this.board[i][j];
-      }
-      board += "\n"
-    }
-    return board;
+    return this.board
+    .map(e => e.reduce((acc,next) => acc + next ) + "\n")
+    .reduce((acc,next) => acc + next);
   }
-
 
   // tick() {
   //   this.tick++;
