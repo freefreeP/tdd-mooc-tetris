@@ -30,7 +30,7 @@ export class Board {
       }
       board += "\n";
     }
-    this.board.reverse();
+    this.board = this.board.reverse();
     return board;
   }
 
