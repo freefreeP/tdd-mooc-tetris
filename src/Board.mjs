@@ -30,6 +30,7 @@ export class Board {
       for(let width = 0 ; width < this.width ; width++) {
         board += this.board[height][width]
       }
+
       board += "\n";
     }
     this.board = this.board.reverse();
@@ -47,10 +48,7 @@ export class Board {
       }
     }
 
-        this.board[this.height-1][1] = Block.color
-        // console.log(this.board.toString() + "\n")
-        // console.log(this.board)
-    
+        this.board[this.height-1][1] = Block.color    
 
   }
 

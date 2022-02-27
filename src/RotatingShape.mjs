@@ -30,7 +30,6 @@ export class RotatingShape {
     }
 
     rotateRight() {
-        // console.log(this.board)
 
         let temp  = JSON.parse(JSON.stringify(this.board)); 
 
@@ -45,7 +44,6 @@ export class RotatingShape {
     }
 
     rotateLeft() {
-        console.log(this.board)
 
         let temp  = JSON.parse(JSON.stringify(this.board)); 
 
