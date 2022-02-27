@@ -23,15 +23,36 @@ describe("The T shape", () => {
        TTT
        ...`
     );
+
+      // console.log(shape.toString())
   });
 
   it("can be rotated right/clockwise", () => {
+    console.log(shape.toString())
+    console.log(shape.currentShape, shape.lastMoveDirection)
+    console.log(shape.rotateRight().toString())
+    console.log(shape.currentShape, shape.lastMoveDirection)
+
+
+
+    console.log(shape.rotateRight().toString())
+    console.log(shape.currentShape, shape.lastMoveDirection)
+
+    console.log(shape.rotateRight().toString())   
+    console.log(shape.currentShape, shape.lastMoveDirection)
+
+    console.log(shape.rotateRight().toString())
+    console.log(shape.currentShape, shape.lastMoveDirection)
+
+
+
     expect(shape.rotateRight().toString()).to.equalShape(
       `.T.
        .TT
        .T.`
     );
-  });
+
+    });
 
   it("can be rotated left/counter-clockwise", () => {
     expect(shape.rotateLeft().toString()).to.equalShape(
@@ -42,6 +63,8 @@ describe("The T shape", () => {
   });
 
   it("has 4 distinct orientations", () => {
+
+
     expect(distinctOrientations(shape).size).to.equal(4);
   });
 });
