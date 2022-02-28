@@ -39,16 +39,35 @@ export class Board {
 
   drop(Block) {
     this.tickCounter = 0;
+
     
-    for(let height = 1; height < this.height; height++) {
+    let spaceTheBlockNeeds;
+    if(Block.color) {
+      spaceTheBlockNeeds = 1
+    } else {
+      spaceTheBlockNeeds = 2
+    }
+    
+    
+    for(let height = this.height-spaceTheBlockNeeds-1; height < this.height; height++) {
       for(let width = 0; width < this.width; width++) {
-        if(this.board[height][width] === "X" || this.board[height][width] === "Y") {
+        if(this.board[height][width] != ".") {
           throw new Error('already falling');
         }
       }
     }
-
-        this.board[this.height-1][1] = Block.color    
+        if(Block.color) {
+          this.board[this.height-1][1] = Block.color    
+        } else {
+          let blockWidth = Block.shapesOfBody[0].board[0].length
+          let middlePointToDropBlock = Math.floor( (this.width -1 -blockWidth) / 2) 
+          for(let height = 1; height < spaceTheBlockNeeds+1; height++) {
+            for(let width = 0; width < blockWidth; width ++) {
+              this.board[this.height-height][width+middlePointToDropBlock] = 
+              Block.shapesOfBody[0].board[height-1][width]
+            }
+          }
+        }
 
   }
 
@@ -57,6 +76,7 @@ export class Board {
 
     for(let width = 0; width < this.width; width++) {
       for(let height = 0; height < this.height-1; height++) {
+        
         if(this.board[height][width] == ".") {
           this.board[height][width] = this.board[height+1][width];
           this.board[height+1][width] = ".";
