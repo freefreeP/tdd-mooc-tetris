@@ -75,12 +75,31 @@ export class Board {
     this.tickCounter += 1;
 
     for(let width = 0; width < this.width; width++) {
+      let flag = true
       for(let height = 0; height < this.height-1; height++) {
         
-        if(this.board[height][width] == ".") {
+        let anfang = this.board[height+1].findIndex(coordinate => coordinate != ".")
+        let ende = this.board[height+1].reverse().findIndex(coordinate => coordinate != ".")
+        // zurückdrehen
+        this.board[height+1].reverse()
+
+        //(this.width-ende-1) - (anfang))
+        let re = /^.*$/
+        if(flag && !re.test(this.board[height].slice(anfang,this.width-Math.abs(ende-2)).join('')) ) {
+          flag = false
+          break
+        } else {
+          flag = false
           this.board[height][width] = this.board[height+1][width];
           this.board[height+1][width] = ".";
-        } 
+        }
+
+        // console.log(this.toString(),anfang,ende)
+
+        // if(this.board[height][width] == ".") {
+        //   this.board[height][width] = this.board[height+1][width];
+        //   this.board[height+1][width] = ".";
+        // } 
       }
     }
 
