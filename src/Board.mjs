@@ -74,38 +74,32 @@ export class Board {
   tick() {
     this.tickCounter += 1;
 
-    for(let width = 0; width < this.width; width++) {
+    for(let height = 0; height < this.height-1; height++) {
       let flag = true
-      for(let height = 0; height < this.height-1; height++) {
+      for(let width = 0; width < this.width; width++) {
+
         
         let anfang = this.board[height+1].findIndex(coordinate => coordinate != ".")
         let ende = this.board[height+1].reverse().findIndex(coordinate => coordinate != ".")
         // zurückdrehen
         this.board[height+1].reverse()
 
+
         //(this.width-ende-1) - (anfang))
         let re = /^.*$/
-        if(flag && !re.test(this.board[height].slice(anfang,this.width-Math.abs(ende-2)).join('')) ) {
+        console.log(this.board[height].slice(anfang,this.width-ende).join(''))
+        if(flag && !re.test(this.board[height].slice(anfang,ende).join('')) ) {
           flag = false
           break
-        } else {
-          flag = false
+        } 
+        else {
           this.board[height][width] = this.board[height+1][width];
           this.board[height+1][width] = ".";
         }
 
-        // console.log(this.toString(),anfang,ende)
-
-        // if(this.board[height][width] == ".") {
-        //   this.board[height][width] = this.board[height+1][width];
-        //   this.board[height+1][width] = ".";
-        // } 
       }
     }
 
-    for(let width = 0; width < this.width; width++) {
-      this.board[this.height-1][width] = ".";
-    }
   }
 
   hasFalling() {
