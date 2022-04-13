@@ -24,7 +24,6 @@ describe("The T shape", () => {
        ...`
     );
 
-      // console.log(shape.toString())
   });
 
   it("can be rotated right/clockwise", () => {

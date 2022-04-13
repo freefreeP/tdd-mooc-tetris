@@ -47,69 +47,69 @@ describe("Falling blocks", () => {
     });
   });
 
-//   describe("When a block reaches the bottom", () => {
-//     beforeEach(() => {
-//       board.drop(new Block("X"));
-//       board.tick();
-//       board.tick();
-//     });
+  describe("When a block reaches the bottom", () => {
+    beforeEach(() => {
+      board.drop(new Block("X"));
+      board.tick();
+      board.tick();
+    });
 
-//     it("it is still moving on the last row", () => {
-//       expect(board.toString()).to.equalShape(
-//         `...
-//          ...
-//          .X.`
-//       );
-//       expect(
-//         board.hasFalling(),
-//         "the player should still be able to move the block"
-//       ).to.be.true;
-//     });
+    it("it is still moving on the last row", () => {
+      expect(board.toString()).to.equalShape(
+        `...
+         ...
+         .X.`
+      );
+      expect(
+        board.hasFalling(),
+        "the player should still be able to move the block"
+      ).to.be.true;
+    });
 
-//     it("it stops when it hits the bottom", () => {
-//       board.tick();
+    it("it stops when it hits the bottom", () => {
+      board.tick();
 
-//       expect(board.toString()).to.equalShape(
-//         `...
-//          ...
-//          .X.`
-//       );
-//       expect(board.hasFalling(), "the block should stop moving").to.be.false;
-//     });
-//   });
+      expect(board.toString()).to.equalShape(
+        `...
+         ...
+         .X.`
+      );
+      expect(board.hasFalling(), "the block should stop moving").to.be.false;
+    });
+  });
 
-//   describe("When a block lands on another block", () => {
-//     beforeEach(() => {
-//       board.drop(new Block("X"));
-//       board.tick();
-//       board.tick();
-//       board.tick();
-//       board.drop(new Block("Y"));
-//       board.tick();
-//     });
+  describe("When a block lands on another block", () => {
+    beforeEach(() => {
+      board.drop(new Block("X"));
+      board.tick();
+      board.tick();
+      board.tick();
+      board.drop(new Block("Y"));
+      board.tick();
+    });
 
-//     it("it is still moving on the row above the other block", () => {
-//       expect(board.toString()).to.equalShape(
-//         `...
-//          .Y.
-//          .X.`
-//       );
-//       expect(
-//         board.hasFalling(),
-//         "the player should still be able to move the block"
-//       ).to.be.true;
-//     });
+    it("it is still moving on the row above the other block", () => {
+      expect(board.toString()).to.equalShape(
+        `...
+         .Y.
+         .X.`
+      );
+      expect(
+        board.hasFalling(),
+        "the player should still be able to move the block"
+      ).to.be.true;
+    });
 
-//     it("it stops when it hits the other block", () => {
-//       board.tick();
+    it("it stops when it hits the other block", () => {
+      board.tick();
 
-//       expect(board.toString()).to.equalShape(
-//         `...
-//          .Y.
-//          .X.`
-//       );
-//       expect(board.hasFalling(), "the block should stop moving").to.be.false;
-//     });
-//   });
+      expect(board.toString()).to.equalShape(
+        `...
+         .Y.
+         .X.`
+      );
+      expect(board.hasFalling(), "the block should stop moving").to.be.false;
+    });
+  });
 
 });
